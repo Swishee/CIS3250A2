@@ -763,7 +763,28 @@ public class PokeDefence {
     
     private static void writeNewHighScores(){
         //Write scores from array into text file, save in location ./Highscores/highscores.txt
-        
+                //Write scores from array into text file, save in location ./Highscores/highscores.txt
+        FileWriter output = null;
+        try {
+            //Declarations for the FileWriting and Printing objects
+            output = new FileWriter("./Highscores/highscores.txt");
+            PrintWriter writer = new PrintWriter(output);
+
+            for( int i = 0; i < highScoreList.size(); i++ ){
+
+                    writer.println("" + highScoreList.get(i));
+            }
+            //Close the file after you are done writing to it
+        }
+        catch (IOException ex) {
+            System.exit(0);
+        }        finally{
+            try {
+                output.close();
+            } catch (IOException ex) {
+                System.exit(0);
+            }
+        }
     }
     
     private static void getHighScores(){
